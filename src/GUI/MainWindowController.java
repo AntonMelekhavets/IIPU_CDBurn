@@ -41,7 +41,7 @@ public class MainWindowController {
 
     @FXML
     public void delFromWriteList() {
-
+        fileToWriteTable.getItems().remove(fileToWriteTable.getSelectionModel().getSelectedItem());
     }
 
     private void refreshListOfFiles(){
@@ -63,7 +63,9 @@ public class MainWindowController {
 
     @FXML
     public void addFileToWrite(){
-
+        fileToWriteTable.getItems().add(fileListTableView.getSelectionModel().getSelectedItem());
+        typeToWrite.setCellValueFactory(cellData -> cellData.getValue().fileType);
+        nameToWrite.setCellValueFactory(cellData -> cellData.getValue().fileName);
     }
 
     @FXML
@@ -73,7 +75,7 @@ public class MainWindowController {
 
     @FXML
     public void goToPrevDir() {
-        fileSearcher.setCurrentPath(fileSearcher.getPrevPath());
+        fileSearcher.setPrevPath();
         refreshListOfFiles();
     }
 }

@@ -7,8 +7,8 @@ import javafx.collections.ObservableList;
 import java.io.File;
 
 public class FileSearcher {
-    private String currentPath = "E:\\";
-    private String prevPath = "E:\\";
+    private String currentPath = "/";
+    private String prevPath = "/";
     private ObservableList<FileInfo> fileInfoList = FXCollections.observableArrayList();
 
     private void getListOfFiles() {
@@ -33,9 +33,13 @@ public class FileSearcher {
         return fileInfoList;
     }
 
-    public void setCurrentPath(String fileName) {
+    public void setCurrentPath(String filePath) {
         this.prevPath = this.currentPath;
-        this.currentPath = this.currentPath + fileName + "\\";
+        this.currentPath = this.currentPath + filePath + "/";
+    }
+
+    public void setPrevPath() {
+        this.currentPath = this.prevPath;
     }
 
     public String getPrevPath() {
