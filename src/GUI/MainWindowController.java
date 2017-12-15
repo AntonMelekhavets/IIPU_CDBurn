@@ -2,8 +2,13 @@ package GUI;
 
 import FileExecutors.FileInfo;
 import FileExecutors.FileSearcher;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class MainWindowController {
     @FXML
@@ -59,6 +64,29 @@ public class MainWindowController {
                     return;
                 }
         }});
+    }
+
+    @FXML
+    private void writeToCD(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run(){
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("DialogWindow.fxml"));
+                    AnchorPane root = loader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("Progress");
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                    DialogWindowController controller = loader.getController();
+                    controller.setStage(stage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @FXML

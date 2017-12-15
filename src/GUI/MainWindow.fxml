@@ -21,7 +21,7 @@
     <Label fx:id="pathLabel" prefHeight="25.0" prefWidth="357.0" AnchorPane.bottomAnchor="360.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="15.0" />
     <Button fx:id="addButton" minWidth="33.0" mnemonicParsing="false" onAction="#addFileToWrite" prefHeight="20.999900000002526" prefWidth="33.0" text="-&gt;" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="311.0" AnchorPane.topAnchor="178.0" />
     <Button fx:id="formatButton" mnemonicParsing="false" onAction="#formatCD" prefHeight="25.0" prefWidth="90.0" text="Format" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="85.0" />
-    <ComboBox fx:id="CDsList" prefWidth="90.0" promptText="CD" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0" />
+    <ComboBox fx:id="CDsList" prefHeight="25.0" prefWidth="90.0" promptText="CD" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="125.0" />
     <Button id="goToPrevDir" mnemonicParsing="false" onAction="#goToPrevDir" prefHeight="25.0" prefWidth="90.0" text="Prev" AnchorPane.leftAnchor="460.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="165.0" />
     <TableView fx:id="fileToWriteTable" layoutX="259.0" layoutY="47.0" prefHeight="347.0" prefWidth="188.0">
       <columns>
@@ -30,5 +30,6 @@
       </columns>
     </TableView>
     <Button fx:id="delButton" mnemonicParsing="false" onAction="#delFromWriteList" text="&lt;-" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="311.0" AnchorPane.topAnchor="212.0" />
+    <Button layoutX="460.0" layoutY="47.0" mnemonicParsing="false" onAction="#writeToCD" prefHeight="25.0" prefWidth="90.0" text="Write" />
   </children>
 </AnchorPane>
