@@ -36,17 +36,12 @@ public class MainWindowController {
     private FileSearcher fileSearcher = new FileSearcher();
 
     @FXML
-    private void initialize() {
+    private void initialize() throws Exception {
         refreshListOfFiles();
         fileListTableView.getSelectionModel().selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> goNextPath(newValue));
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().fileName);
         typeColumn.setCellValueFactory(cellData -> cellData.getValue().fileType);
-    }
-
-    @FXML
-    public void delFromWriteList() {
-        fileToWriteTable.getItems().remove(fileToWriteTable.getSelectionModel().getSelectedItem());
     }
 
     private void refreshListOfFiles(){
@@ -67,38 +62,39 @@ public class MainWindowController {
     }
 
     @FXML
-    private void writeToCD(){
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run(){
-                try {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("DialogWindow.fxml"));
-                    AnchorPane root = loader.load();
-                    Stage stage = new Stage();
-                    stage.setTitle("Progress");
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                    DialogWindowController controller = loader.getController();
-                    controller.setStage(stage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+    private void writeToCD() throws Exception {
+        createDialogWindow().startWriten(fileToWriteTable.getItems());
+    }
+
+    private DialogWindowController createDialogWindow() throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("DialogWindow.fxml"));
+        AnchorPane root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Progress");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        DialogWindowController controller = loader.getController();
+        controller.setStage(stage);
+        return controller;
     }
 
     @FXML
-    public void addFileToWrite(){
+    public void addFileToWrite() throws Exception{
         fileToWriteTable.getItems().add(fileListTableView.getSelectionModel().getSelectedItem());
         typeToWrite.setCellValueFactory(cellData -> cellData.getValue().fileType);
         nameToWrite.setCellValueFactory(cellData -> cellData.getValue().fileName);
     }
 
     @FXML
-    public void formatCD(){
+    public void delFromWriteList() throws Exception {
+        fileToWriteTable.getItems().remove(fileToWriteTable.getSelectionModel().getSelectedItem());
+    }
 
+    @FXML
+    public void formatCD() throws Exception {
+        createDialogWindow().formatDisk();
     }
 
     @FXML

@@ -23,7 +23,7 @@ public class FileSearcher {
                 fileType = "file";
             else
                 fileType = "dir";
-            fileInfoList.add(new FileInfo(fileList[i].getName(), fileType));
+            fileInfoList.add(new FileInfo(fileList[i].getName(), fileType, fileList[i]));
         }
     }
 

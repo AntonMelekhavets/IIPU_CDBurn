@@ -1,6 +1,8 @@
 package GUI;
 
 import FileExecutors.CDTask;
+import FileExecutors.FileInfo;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +17,7 @@ public class DialogWindowController {
     @FXML
     public Button cancelButton;
     private Stage stage;
+    private String [] operation;
 
     public void setStage (Stage stage) {
         this.stage = stage;
@@ -22,8 +25,18 @@ public class DialogWindowController {
 
     @FXML
     private void initialize () {
-        CDTask cdTask = new CDTask("lsusb", progressBar);
-        cdTask.start();
+    }
+
+    public void startWriten (ObservableList<FileInfo> list) {
+        operationLabel.setText("In progress...");
+        CDTask task = new CDTask(operationLabel, list, 1, stage);
+        task.start();
+    }
+
+    public void formatDisk () {
+        operationLabel.setText("In progress...");
+        CDTask task = new CDTask(operationLabel, null, 2, stage);
+        task.start();
     }
 
     @FXML
