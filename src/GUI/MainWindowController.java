@@ -2,7 +2,6 @@ package GUI;
 
 import FileExecutors.FileInfo;
 import FileExecutors.FileSearcher;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -44,12 +43,12 @@ public class MainWindowController {
         typeColumn.setCellValueFactory(cellData -> cellData.getValue().fileType);
     }
 
-    private void refreshListOfFiles(){
+    private void refreshListOfFiles() {
         pathLabel.setText(fileSearcher.getCurrentPath());
         fileListTableView.setItems(fileSearcher.getFileInfoList());
     }
 
-    private void goNextPath (FileInfo fileInfo) {
+    private void goNextPath(FileInfo fileInfo) {
         fileListTableView.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 if (fileInfo.getFileType().contains("dir")) {
@@ -58,7 +57,8 @@ public class MainWindowController {
                 } else {
                     return;
                 }
-        }});
+            }
+        });
     }
 
     @FXML
@@ -81,7 +81,7 @@ public class MainWindowController {
     }
 
     @FXML
-    public void addFileToWrite() throws Exception{
+    public void addFileToWrite() throws Exception {
         fileToWriteTable.getItems().add(fileListTableView.getSelectionModel().getSelectedItem());
         typeToWrite.setCellValueFactory(cellData -> cellData.getValue().fileType);
         nameToWrite.setCellValueFactory(cellData -> cellData.getValue().fileName);
@@ -99,7 +99,7 @@ public class MainWindowController {
 
     @FXML
     public void goToPrevDir() {
-        fileSearcher.setPrevPath();
+        fileSearcher.setCurrentPath();
         refreshListOfFiles();
     }
 }

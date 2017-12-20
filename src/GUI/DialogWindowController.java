@@ -9,34 +9,49 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class DialogWindowController {
     @FXML
     public Label operationLabel;
     @FXML
-    public ProgressBar progressBar;
-    @FXML
     public Button cancelButton;
     private Stage stage;
-    private String [] operation;
+    private ObservableList<FileInfo> fileList = null;
+    private int sizeToWrite;
 
-    public void setStage (Stage stage) {
+    public void setStage(Stage stage) {
         this.stage = stage;
     }
 
     @FXML
-    private void initialize () {
+    private void initialize() {
     }
 
-    public void startWriten (ObservableList<FileInfo> list) {
+    public void startWriten(ObservableList<FileInfo> list) {
+        fileList = list;
         operationLabel.setText("In progress...");
-        CDTask task = new CDTask(operationLabel, list, 1, stage);
+        CDTask task = new CDTask(this);
         task.start();
     }
 
-    public void formatDisk () {
+    public void formatDisk() {
+        fileList = null;
         operationLabel.setText("In progress...");
-        CDTask task = new CDTask(operationLabel, null, 2, stage);
+        CDTask task = new CDTask(this);
         task.start();
+    }
+
+    public Label getOperationLabel() {
+        return operationLabel;
+    }
+
+    public ObservableList<FileInfo> getFileList() {
+        return fileList;
+    }
+
+    public int getSizeToWrite() {
+        return sizeToWrite;
     }
 
     @FXML

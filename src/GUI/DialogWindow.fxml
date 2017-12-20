@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="145.0" prefHeight="145.0" prefWidth="383.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="GUI.DialogWindowController">
+<AnchorPane minHeight="116.0" prefHeight="116.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DialogWindowController">
   <children>
-    <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#finishOperation" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="14.0" />
-    <Label prefHeight="20.999900000002526" prefWidth="66.9998779296875" text="Progress: " AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="302.0" AnchorPane.topAnchor="30.0" />
-    <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="34.0" />
-    <Label fx:id="operationLabel" prefHeight="21.0" prefWidth="67.0" text="" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="302.0" AnchorPane.topAnchor="65.0" />
+    <Button fx:id="cancelButton" layoutX="302.0" layoutY="82.0" mnemonicParsing="false" onAction="#finishOperation" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="302.0" AnchorPane.rightAnchor="14.0" />
+    <Label prefHeight="21.0" prefWidth="67.0" text="Progress: " AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="302.0" AnchorPane.topAnchor="30.0" />
+    <Label fx:id="operationLabel" layoutX="12.0" layoutY="55.0" prefHeight="21.0" prefWidth="355.0" text="" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="55.0" />
   </children>
 </AnchorPane>

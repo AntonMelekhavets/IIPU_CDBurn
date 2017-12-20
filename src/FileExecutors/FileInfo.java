@@ -10,7 +10,7 @@ public class FileInfo {
     public StringProperty fileType;
     private File file;
 
-    FileInfo (String name, String type, File file) {
+    FileInfo(String name, String type, File file) {
         this.fileName = new SimpleStringProperty(name);
         this.fileType = new SimpleStringProperty(type);
         this.file = file;
